@@ -5,8 +5,6 @@ import 'package:console/console.dart';
 import 'package:conversor/conversor.dart';
 
 void main(List<String> arguments) async {
-  num dato;
-
   Console.init();
 
   var choices = [
@@ -17,13 +15,14 @@ void main(List<String> arguments) async {
     "salir"
   ];
 
+
   /// Mediante este chooser seleccionamos la opción y es correcto se llama a la función convertir de la clase conversor
-  List<String> opcion;
+  ///
   Chooser(choices, message: "Seleccione Una opcion: ")
       .choose()
-      .then(
-          (value) => Chooser(value, message: "seleccione una opción:").choose())
-      .then((value) async =>
-          (value == 5 ? exit(0) : await readInput("Inserte un número")))
-      .then((value) => Conversor.convertir(dato, opcion));
+      .then((value) => value == "salir"
+          ? exit(0)
+          : Chooser(value, message: "Seleccione Opción: ").choose())
+      .then((value) async => print(
+          "$value ${Conversor.convertir(await readInput("Introduzca numero").then((value) => num.parse(value)), value)}"));
 }

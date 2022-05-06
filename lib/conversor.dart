@@ -1,31 +1,24 @@
 /// Conversor.dart
-/// En este archivo vamos a utilizar la función Window del paquete console para
-/// crear una full screen window
-import 'dart:convert';
-
-import 'package:console/curses.dart';
-import 'dart:io';
-import 'package:console/console.dart';
-import 'dart:async';
-
+/// Clase que evalua la opción y retorna el conversor
 class Conversor {
-  static num convertir(num dato, List<String> opcion) {
+  static num convertir(num dato, String? opcion) {
+    print("La opcion: $opcion");
     switch (opcion) {
-      case ['4', '1']:
+      case "Convertir Celsius - Fahrenheight":
         return dato * 1.8 + 32;
-      case ['4', '2']:
+      case "Convertir Fahrenheight - Celsius":
         return (dato - 32) * 5 / 9;
-      case ['3', '1']:
+      case "Convertir Metros - Yardas":
         return dato * 1.0936;
-      case ['3', '2']:
+      case "Convertir Yardas - Metros":
         return dato * 0.9144;
-      case ['2', '1']:
+      case "Convertir Litros - Galones":
         return dato * 0.264;
-      case ['2', '2']:
+      case "Convertir Galones - Litros":
         return dato * 3.7854;
-      case ['1', '1']:
+      case "Convertir Gramos -- ONZAS":
         return dato * 0.0353;
-      case ['1', '2']:
+      case "Convertir Onzas - Gramos":
         return dato * 28.3495;
       default:
         throw UnimplementedError(
